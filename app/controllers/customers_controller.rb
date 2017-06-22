@@ -5,6 +5,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @customers = Customer.all
+    CustomerMailer.random_afformation.deliver
   end
 
   # GET /customers/1
