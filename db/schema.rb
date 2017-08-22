@@ -11,24 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621040228) do
+ActiveRecord::Schema.define(version: 20170821211649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "afformations", force: :cascade do |t|
     t.string   "afformation_text"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "afformation_focus_area"
+    t.boolean  "user_submitted_personal_afformation"
+    t.integer  "user_id"
   end
 
-  create_table "customers", force: :cascade do |t|
+  add_index "afformations", ["user_id"], name: "index_afformations_on_user_id", using: :btree
+
+  create_table "sent_afformations", force: :cascade do |t|
+    t.datetime "email_replied_to_date"
+    t.boolean  "email_replied_to"
+    t.text     "user_response_to_afformation"
+    t.integer  "user_id"
+    t.integer  "afformation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sent_afformations", ["afformation_id"], name: "index_sent_afformations_on_afformation_id", using: :btree
+  add_index "sent_afformations", ["user_id"], name: "index_sent_afformations_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "phone"
     t.string   "name"
     t.string   "timezone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "afformation_focus_areas",                      array: true
+    t.boolean  "personal_afformations_submitted"
+    t.boolean  "deactivated"
   end
 
+  add_foreign_key "sent_afformations", "afformations"
+  add_foreign_key "sent_afformations", "users"
 end

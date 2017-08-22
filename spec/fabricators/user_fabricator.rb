@@ -1,4 +1,4 @@
-Fabricator(:customer) do
+Fabricator(:user) do
   email    "MyString"
   phone    "MyString"
   name     "MyString"
