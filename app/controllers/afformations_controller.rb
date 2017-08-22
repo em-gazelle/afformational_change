@@ -69,6 +69,6 @@ class AfformationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def afformation_params
-      params.require(:afformation).permit(:afformation_text)
+      params.require(:afformation).permit(:afformation_text, :afformation_focus_area)
     end
 end

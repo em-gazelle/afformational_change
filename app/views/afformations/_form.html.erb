@@ -15,6 +15,10 @@
     <%= f.label :afformation_text %><br>
     <%= f.text_field :afformation_text %>
   </div>
+  <div class="field">
+    <%= f.label :afformation_focus_area %><br>
+    <%= f.select :afformation_focus_area, Afformation.afformation_focus_areas.keys %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
