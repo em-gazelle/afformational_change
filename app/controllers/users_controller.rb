@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    UserMailer.random_afformation.deliver
+    # UserMailer.random_afformation.deliver
   end
 
   # GET /users/1
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        UserMailer.welcome_email(@user).deliver
+        # UserMailer.welcome_email(@user).deliver
 
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
@@ -72,6 +72,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :phone, :name, :timezone)
+      params.require(:user).permit(:email, :phone, :name, :timezone, :afformation_focus_areas)
     end
 end
