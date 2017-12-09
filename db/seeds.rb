@@ -18,4 +18,4 @@ csv.each do |row|
 end
 
 
-Customer.create!(email: "emmaf9@gmail.com", name: "Emily", phone: "510.533.7989")
+User.create!(email: "emmaf9@gmail.com", name: "Emily", phone: "510.533.7989")

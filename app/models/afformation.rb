@@ -3,7 +3,7 @@ class Afformation < ActiveRecord::Base
 
 	has_many :users, through: :sent_afformations
 	# applies only to user-submitted afformations
-	belongs_to :user#, optional: true
+	belongs_to :user, required: false
 
 	# enum afformation_focus_area: { career: 0, health: 1, athletic: 2, positivity: 3 }
 
