@@ -1,0 +1,2 @@
+class SentAfformationsController < ApplicationController
+end
