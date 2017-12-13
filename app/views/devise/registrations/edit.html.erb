@@ -31,6 +31,24 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :timezone %><br>
+    <%= f.text_field :timezone %>
+  </div>
+  <div class="field">
+    <%= f.label :afformation_focus_areas %><br>
+    <%= f.select :afformation_focus_areas, User.afformation_focus_areas.keys, {include_blank: 'You will be sent afformations in all areas by default; select to specialize'}, {multiple: true, class: 'selectpicker chosen-select'} %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
