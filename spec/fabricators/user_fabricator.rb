@@ -5,4 +5,5 @@ Fabricator(:user) do
   timezone "MyString"
   password "oops55!!!!"
   password_confirmation "oops55!!!!"
+  personal_afformation_focus_area ["career", "health"]
 end
