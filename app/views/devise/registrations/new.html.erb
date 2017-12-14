@@ -35,10 +35,10 @@
     <%= f.text_field :timezone %>
   </div>
   <div class="field">
-    <%= f.label :personal_afformation_focus_areas %>
+    <%= f.label :personal_afformation_focus_area %>
     <br><i>You will be sent afformations in all areas by default; select to customize </i><br>
     <!-- General is default. Afformation focus area '0' is general. If focus areas selected users are choosing NOT to have 'default' -->
-    <%= f.select :personal_afformation_focus_areas, User.afformation_focus_areas.keys[1..-1], {include_hidden: false, include_blank: false}, {multiple: true, class: 'selectpicker chosen-select'} %>
+    <%= f.select :personal_afformation_focus_area, User.afformation_enum_mappings.keys[1..-1], {include_hidden: false, include_blank: false}, {multiple: true, class: 'selectpicker chosen-select'} %>
   </div>
 
   <div class="actions">
