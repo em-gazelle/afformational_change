@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   # resources :users
-  resources :afformations
+  resources :afformations, except: [:show]
 
   # root 'home#index'
   # root 'users#new'

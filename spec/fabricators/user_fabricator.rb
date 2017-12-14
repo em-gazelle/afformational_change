@@ -1,5 +1,5 @@
 Fabricator(:user) do
-  email    "blahblah@gmail.com"
+  email    { Faker::Internet.email }
   phone    "MyString"
   name     "MyString"
   timezone "MyString"

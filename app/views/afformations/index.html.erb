@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Afformations</h1>
+<% if current_user.admin? %>
+  <h1>Here's a list of the site's afformations:</h1>
+<% else %> 
+  <h1>Here's a list of all your personally submitted afformations:</h1>
+<% end %>
 
 <table>
   <thead>
@@ -16,7 +20,6 @@
       <tr>
         <td><%= afformation.afformation_text %></td>
         <td><%= afformation.afformation_focus_area %></td>
-        <td><%= link_to 'Show', afformation %></td>
         <td><%= link_to 'Edit', edit_afformation_path(afformation) %></td>
         <td><%= link_to 'Destroy', afformation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
