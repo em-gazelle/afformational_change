@@ -11,17 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213051336) do
+ActiveRecord::Schema.define(version: 20171215020846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "afformations", force: :cascade do |t|
     t.string   "afformation_text"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.integer  "afformation_focus_area"
-    t.boolean  "user_submitted_personal_afformation"
     t.integer  "user_id"
   end
 
@@ -29,7 +28,6 @@ ActiveRecord::Schema.define(version: 20171213051336) do
 
   create_table "sent_afformations", force: :cascade do |t|
     t.datetime "email_replied_to_date"
-    t.boolean  "email_replied_to"
     t.text     "user_response_to_afformation"
     t.integer  "user_id"
     t.integer  "afformation_id"
@@ -47,7 +45,6 @@ ActiveRecord::Schema.define(version: 20171213051336) do
     t.string   "timezone"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.boolean  "personal_afformations_submitted"
     t.boolean  "deactivated"
     t.string   "encrypted_password",              default: "",    null: false
     t.string   "reset_password_token"
