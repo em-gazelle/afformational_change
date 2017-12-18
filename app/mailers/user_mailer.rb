@@ -5,12 +5,12 @@ class UserMailer < ApplicationMailer
 		mail(to: @user.email, subject: 'Why are you so good at change?').deliver
 	end
 
-	def random_afformation
-		@afformation = Afformation.all.shuffle.sample
-		User.all.each do |user|
-			@user = user
-			mail(to: @user.email, subject: @afformation.afformation_text).deliver		
-		end
+	def daily_afformation(user, afformation)
+		@user = user
+		@afformation = afformation
+		
+		mail(to: @user.email, subject: @afformation.afformation_text)
+		SentAfformation.create!(afformation_id: @afformation.id, user_id: @user.id)
 	end
 
 end
