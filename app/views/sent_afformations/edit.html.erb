@@ -1,0 +1,26 @@
+<h1>Responding to your Afformations: </h1>
+
+<%= form_for(@sent_afformation) do |f| %>
+  <% if @sent_afformation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sent_afformation.errors.count, "error") %> prohibited this sent_afformation from being saved:</h2>
+
+      <ul>
+      <% @sent_afformation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Response to Afformation:" %><br>
+    <%= f.text_field :user_response_to_afformation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', sent_afformations_path %>

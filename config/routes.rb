@@ -2,12 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   get 'home/index'
 
-  # resources :users
   resources :afformations, except: [:show]
 
-  # root 'home#index'
-  # root 'users#new'
-  root 'afformations#index'
+  resources :sent_afformations, only: [:index, :edit, :update]
+
+  root 'sent_afformations#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

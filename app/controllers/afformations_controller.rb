@@ -43,8 +43,8 @@ class AfformationsController < ApplicationController
   def update
     respond_to do |format|
       if @afformation.update(afformation_params)
-        format.html { redirect_to @afformation, notice: 'Afformation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @afformation }
+        format.html { redirect_to afformations_url, notice: 'Afformation was successfully updated.' }
+        format.json { render :index, status: :ok, location: @afformations }
       else
         format.html { render :edit }
         format.json { render json: @afformation.errors, status: :unprocessable_entity }
