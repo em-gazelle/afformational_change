@@ -6,7 +6,7 @@ gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -26,12 +26,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # gem 'modernizr_rails'
 # gem 'scrollmagicjs-rails'
-
+gem 'bootstrap'
 
 gem 'resque', "~> 1.22.0"
 gem 'devise'
-# sharing secrets in config/secrets.yml with heroku:
-gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -58,4 +56,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+# sharing secrets in config/secrets.yml with heroku:
+gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
+
+# gem rails_12factor and ruby specification for heroku:
+gem 'rails_12factor', group: :production
+
+ruby "2.3.1"
 
