@@ -30,6 +30,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'resque', "~> 1.22.0"
 gem 'devise'
+# sharing secrets in config/secrets.yml with heroku:
+gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
