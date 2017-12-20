@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # gem 'modernizr_rails'
 # gem 'scrollmagicjs-rails'
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.0.0.beta2.1'
 
 gem 'resque', "~> 1.22.0"
 gem 'devise'
