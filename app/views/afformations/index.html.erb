@@ -20,8 +20,14 @@
       <tr>
         <td><%= afformation.afformation_text %></td>
         <td><%= afformation.afformation_focus_area %></td>
-        <td><%= link_to 'Edit', edit_afformation_path(afformation) %></td>
-        <td><%= link_to 'Destroy', afformation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to edit_afformation_path(afformation) do %>
+              <span class="fa fa-pencil"></span>
+            <% end %>
+        </td>
+        <td><%= link_to afformation, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="fa fa-trash-o"></span>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +35,6 @@
 
 <br>
 
-<%= link_to 'New Afformation', new_afformation_path %>
+<%= link_to new_afformation_path do %>
+  <span class="fa fa-plus-square-o">  Add New Afformation</span>
+<% end %>

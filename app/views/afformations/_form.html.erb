@@ -11,11 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :afformation_text %><br>
-    <%= f.text_field :afformation_text %>
+    <%= f.text_field :afformation_text, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :afformation_focus_area %><br>
     <%= f.select :afformation_focus_area, Afformation.afformation_focus_areas.keys %>
   </div>
@@ -23,3 +23,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<button type="button" class="btn btn-success">Success</button>
