@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<table>
+<h2>Emailed Afformations:</h2>
+
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
-      <th>Afformation</th>
-      <th>Your Response</th>
-      <th>Add Response</th>
-      <th colspan="3"></th>
+      <th scope="col">Afformation:</th>
+      <th scope="col">Your Response:</th>
+      <th scope="col" class="text-center">Respond</th>
     </tr>
   </thead>
 
@@ -16,9 +17,11 @@
         <td><%= sent_afformation.afformation_text %></td>
         <td><%= sent_afformation.user_response_to_afformation %></td>
         <td><%= link_to edit_sent_afformation_path(sent_afformation) do %>
-<!--             <span class="fa fa-mail-reply"></span> -->
-             <span class="fa fa-pencil-square-o"></span>
-          <% end %>
+          <div class="text-center">
+            <!-- <span class="fa fa-mail-reply"></span> -->
+             <span class="fa fa-pencil-square-o fa-lg btn-light"></span>
+          </div>
+        <% end %>
         </td>
       </tr>
     <% end %>

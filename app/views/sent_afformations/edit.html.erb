@@ -1,5 +1,4 @@
-<h1>Responding to your Afformations: </h1>
-
+<h2><%= @sent_afformation.afformation_text %></h2>
 <%= form_for(@sent_afformation) do |f| %>
   <% if @sent_afformation.errors.any? %>
     <div id="error_explanation">
@@ -14,10 +13,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label "Response to Afformation:" %><br>
-    <%= f.text_area :user_response_to_afformation %>
+    <%= f.label "Write out an official response to remind yourself:" %><br>
+    <%= f.text_area :user_response_to_afformation, class: "form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Response", class: "btn btn-success btn-sm" %>
   </div>
 <% end %>

@@ -1,31 +1,36 @@
 <p id="notice"><%= notice %></p>
 
 <% if current_user.admin? %>
-  <h1>Here's a list of the site's afformations:</h1>
+  <h2>All Afformations:</h2>
 <% else %> 
-  <h1>Here's a list of all your personally submitted afformations:</h1>
+  <h2>Your Personal Afformations:</h2>
 <% end %>
 
-<table>
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
-      <th>Afformation</th>
-      <th>Focus Area:</th>
-      <th colspan="3"></th>
+      <th scope="col">Focus:</th>
+      <th scope="col">Afformation:</th>
+      <th scope="col" class="text-center">Edit</th>
+      <th scope="col" class="text-center">Remove</th>
     </tr>
   </thead>
 
   <tbody>
     <% @afformations.each do |afformation| %>
       <tr>
+        <td><%= afformation.afformation_focus_area.capitalize %></td>
         <td><%= afformation.afformation_text %></td>
-        <td><%= afformation.afformation_focus_area %></td>
         <td><%= link_to edit_afformation_path(afformation) do %>
-              <span class="fa fa-pencil"></span>
+            <div class="text-center">
+              <span class="fa fa-pencil fa-lg btn-light"></span>
+            </div>
             <% end %>
         </td>
-        <td><%= link_to afformation, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <span class="fa fa-trash-o"></span>
+        <td><%= link_to afformation, method: :delete, data: { confirm: 'Are you sure you want to delete your afformation?' } do %>
+            <div class="text-center">
+              <span class="fa fa-trash-o fa-lg btn-light"></span>
+            </div>
           <% end %>
         </td>
       </tr>
@@ -36,5 +41,5 @@
 <br>
 
 <%= link_to new_afformation_path do %>
-  <span class="fa fa-plus-square-o">  Add New Afformation</span>
+  <span class="fa fa-plus-square-o fa-lg btn-light">  New Afformation</span>
 <% end %>
