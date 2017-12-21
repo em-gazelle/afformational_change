@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>AfformationPusher</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<head>
+		<title>Daily Afformations</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 
-</head>
-<body>
+	</head>
 
-<nav class="navbar navbar-expand-md navbar-light bg-faded">
-<!-- <nav class="navbar navbar-light" style="background-color: #e3f2fd;"> fixed-top class tambien --> 
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <%= link_to "Afformational Change", home_index_path, class: "navbar-brand" %>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-		<% if user_signed_in? %>
-	       <li class="nav-item">
-			  <%= link_to sent_afformations_path do %>
-			  	<i class="fa fa-envelope-o fa-lg nav-link"> Answer Afformations</i>
-		      <% end %>
-	      </li>
-		  <li class="nav-item">
-			  <%= link_to afformations_path do %>
-			  	<i class="fa fa-plus-square-o fa-lg nav-link"> Create Afformations</i>
-		      <% end %>
-	      </li>
+	<body>
+		<nav class="navbar navbar-expand-md navbar-light bg-faded">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<%= link_to "Afformational Change", home_index_path, class: "navbar-brand" %>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+				<% if user_signed_in? %>
+						 <li class="nav-item">
+						<%= link_to sent_afformations_path do %>
+							<i class="fa fa-envelope-o fa-lg nav-link"> Answer Afformations</i>
+							<% end %>
+						</li>
+					<li class="nav-item">
+						<%= link_to afformations_path do %>
+							<i class="fa fa-plus-square-o fa-lg nav-link"> Create Afformations</i>
+							<% end %>
+						</li>
 
-	      <!-- CHANGE ME WITH USER PROFILE PATH -->
-	      <!-- CREATE USER PROFILES -->
+						<!-- CHANGE ME WITH USER PROFILE PATH -->
+						<!-- CREATE USER PROFILES -->
 
-	      <li class="nav-item">
-			  <%= link_to afformations_path do %>
-			  	<i class="fa fa-user fa-lg nav-link"> Profile </i>
-		      <% end %>
-	      </li>
-	      <li class="nav-item">
-			  <%= link_to destroy_user_session_path, method: :delete do %>
-			  	<i class="fa fa-sign-out fa-lg nav-link"></i>
-		      <% end %>
-	      </li>
-		<% else %>
-	      <li class="nav-item">
-			  <%= link_to new_user_session_path do %>
-			  	<i class="fa fa-sign-in fa-lg nav-link"></i>
-		      <% end %>
-	      </li>			
-		<% end %>    
-    </ul>
-  </div>
-</nav>
+						<li class="nav-item">
+						<%= link_to afformations_path do %>
+							<i class="fa fa-user fa-lg nav-link"> Profile </i>
+							<% end %>
+						</li>
+						<li class="nav-item">
+						<%= link_to destroy_user_session_path, method: :delete do %>
+							<i class="fa fa-sign-out fa-lg nav-link"></i>
+							<% end %>
+						</li>
+				<% else %>
+						<li class="nav-item">
+						<%= link_to new_user_session_path do %>
+							<i class="fa fa-sign-in fa-lg nav-link"></i>
+							<% end %>
+						</li>			
+				<% end %>    
+				</ul>
+			</div>
+		</nav>
 
+		<div class="container bg-light" id="site-content-container">
+			<p class="notice"><%= notice %></p>
+			<p class="alert"><%= alert %></p>
+			<%= yield %>
+		</div>
 
-
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-	<%= yield %>
-</body>
+	</body>
 </html>
