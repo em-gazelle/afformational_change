@@ -2,10 +2,10 @@
 
 </br>
 <p class="center">
-  Congratulations on beginning your journey to a better life and recognizing that you hold the power to change! Changing your thoughts can be challenging--yet effective. So far, you've made <%= @user_afformations_count %> personal afformations and have received <%= @user_sent_afformations_count %> afformations, along with officially responding to <%= @user_responses_count %> of your daily afformations. 
+  Congratulations on beginning your journey to a better life and recognizing that you hold the power to change! Changing your thoughts can be challenging--yet effective. <%= @user_count_text %>
 </p>
 <p>
-  Remember, though, that afformations are so powerful because:
+  Remember that afformations are so powerful because:
   <ul>
     <li> your mind subsconsciously answers the questions you ask it</li>
     <li> afformations can be used to reword negative thoughts into positive ones</li>
@@ -13,6 +13,13 @@
   </ul>
 </p>
 
-</br></br></br>
-
-<%= link_to "Would you like to edit your profile, unsubscribe, or delete your account?", edit_user_registration_path, class: "btn btn-sm btn-outline-warning" %>
+<% if user_signed_in? %>
+	</br></br></br>
+	<%= link_to "Would you like to edit your profile, unsubscribe, or delete your account?", edit_user_registration_path, class: "btn btn-sm btn-outline-warning" %>
+<% else %>
+	</br>
+	<%= link_to new_user_session_path, class: "btn btn-outline-success centered-btn" do %>
+		Are you ready for change? <br>
+		Sign up or login!
+	<% end %>
+<% end %>
