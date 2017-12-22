@@ -15,7 +15,7 @@
 
 <% if user_signed_in? %>
 	</br></br></br>
-	<%= link_to "Would you like to edit your profile, unsubscribe, or delete your account?", edit_user_registration_path, class: "btn btn-sm btn-outline-warning" %>
+	<%= link_to "Would you like to edit your profile, unsubscribe, or delete your account?", edit_user_registration_path, class: "btn btn-sm btn-outline-warning float-right btn-padding-right" %>
 <% else %>
 	</br>
 	<%= link_to new_user_session_path, class: "btn btn-outline-success centered-btn" do %>
