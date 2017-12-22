@@ -39,7 +39,21 @@ Rails.application.configure do
   # Send Emails - set to host of application ~~
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'daily-afformations.herokuapp.com' }
+
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    user_name:            Rails.application.secrets.email_username,
+    password:             Rails.application.secrets.email_password,
+    authentication:       'plain',
+    enable_starttls_auto: true  }
+
+
+  # Care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
