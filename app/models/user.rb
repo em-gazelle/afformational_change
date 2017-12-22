@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 	# optional, user submitted only
 	has_many :afformations
 	
-	validates_presence_of :email, :name
+	validates_presence_of :email #, :name
 	after_validation :assign_general_if_no_or_all_focus_areas_selected
 
 

@@ -12,8 +12,8 @@ RSpec.describe User, type: :model do
 				expect(Fabricate.build(:user, email: "millie@")).to_not be_valid
 			end
 			# address email formatted as millie@gg ... improper domain and lacking .com
-			it 'does not create user without a name' do
-				expect(Fabricate.build(:user, name: nil)).to_not be_valid
+			it 'does not create user without email' do
+				expect(Fabricate.build(:user, email: nil)).to_not be_valid
 			end
 		end
 		context 'when valid' do
