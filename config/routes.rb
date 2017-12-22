@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+
   devise_for :users
-  get 'home/index'
+
+  get 'home/show', as: "profile"
 
   resources :afformations, except: [:show]
-
   resources :sent_afformations, only: [:index, :edit, :update]
 
   root 'sent_afformations#index'

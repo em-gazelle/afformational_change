@@ -33,9 +33,23 @@ body:before {
 	opacity: .85;
 	border-radius: 4rem !important;
 	padding-bottom: 45px;
+	padding-top: 35px;
 }
 
 
 table {
 	margin-top: 2%;
+}
+
+.centered-btn {
+	display: block;
+	margin: auto;
+	width: 30%;
+	min-width: 175px;
+}
+
+/* for buttons with large amounts of text */
+/* bootstrap allows text to break page when page is horizontally collapsed */
+.btn {
+    white-space:normal !important;
 }

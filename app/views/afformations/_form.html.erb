@@ -1,11 +1,11 @@
 <%= form_for(@afformation) do |f| %>
   <% if @afformation.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@afformation.errors.count, "error") %> prohibited this afformation from being saved:</h2>
+      <h4 class="text-danger"><%= pluralize(@afformation.errors.count, "error") %> prohibited this afformation from being saved:</h4>
 
       <ul>
       <% @afformation.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li class="text-danger"><%= message %></li>
       <% end %>
       </ul>
     </div>

@@ -1,61 +1,77 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <h2 class="text-center">Edit Profile:</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password, autocomplete: "off" %>
+    </div>
+
+  <!--   <div class="field">
+      <%#= f.label :name %><br>
+      <%#= f.text_field :name %>
+    </div> -->
+  <!--   <div class="field">
+      <%#= f.label :phone %><br>
+      <%#= f.text_field :phone %>
+    </div> -->
+  <!--   <div class="field">
+      <%#= f.label :timezone %><br>
+      <%#= f.text_field :timezone %>
+    </div> -->
+
+    <div class="field">
+      <%= f.label :personal_afformation_focus_area %><br>
+      <%= f.select :personal_afformation_focus_area, User.afformation_enum_mappings.keys[1..-1], {include_hidden: false, include_blank: false}, {multiple: true, class: 'selectpicker chosen-select'} %>
+    </div>
+
+    </br>
+
+      <div class="field">
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+
+    </br></br>
+
+      <div class="form-check form-check-inline">
+        <label class="text-danger">Would you like to unsubscribe from receiving your daily afformations?</label>
+        <%= f.check_box :deactivated %>
+        <br><i class="text-secondary small">(Don't worry; you can change your mind anytime!)</i>
+      </div>
+
+    </br></br></br>
+
+    <div class="actions">
+      <%= f.submit "Update", class: "btn btn-danger" %>
+    </div>
+
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  </br></br></br>
+  <h5>Delete Account:</h5>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+  <p>Deleting will permanently destroy all personal afformations and responses you've submitted. You can also 'unsubscribe' to stop receiving daily afformations, but retain the work you've done and to enable yourself to begin your journey to a better you in the future.
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :timezone %><br>
-    <%= f.text_field :timezone %>
-  </div>
-  <div class="field">
-    <%= f.label :afformation_focus_areas %><br>
-    <%= f.select :afformation_focus_areas, User.afformation_focus_areas.keys, {include_blank: 'You will be sent afformations in all areas by default; select to specialize'}, {multiple: true, class: 'selectpicker chosen-select'} %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+  <%= button_to "Permanently delete my account", registration_path(resource_name), data: { confirm: "Are you sure you want to delete your account? Confirming will PERMANENTLY delete all data. Note that you can also unsubscribe from receiving daily afformations." }, method: :delete, class: "btn btn-danger btn-sm" %></p>
+</div>

@@ -1,9 +1,14 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class="text-success"><%= notice %></p>
 
 <% if current_user.admin? %>
   <h2 class="text-center">All Afformations:</h2>
 <% else %> 
-  <h2 class="text-center">Your Personal Afformations:</h2>
+  <h2 class="text-center">Your Personal Afformations</h2>
+<% end %>
+
+</br>
+<%= link_to new_afformation_path, class: "btn btn-outline-success btn-sm centered-btn" do %>
+  <span class="fa fa-plus-square-o fa-lg"> New Afformation</span>
 <% end %>
 
 <table class="table table-bordered table-hover">
@@ -37,9 +42,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to new_afformation_path do %>
-  <span class="fa fa-plus-square-o fa-lg btn-light">  New Afformation</span>
-<% end %>
