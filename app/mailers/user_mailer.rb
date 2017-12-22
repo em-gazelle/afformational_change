@@ -1,8 +1,7 @@
 class UserMailer < ApplicationMailer
 	
-	def welcome_email(user)
-		@user = user
-		mail(to: @user.email, subject: 'Why are you so good at change?').deliver
+	def welcome_email(user_email)
+		mail(to: user_email, subject: 'How did you become so open to change?')
 	end
 
 	def daily_afformation(user, afformation)

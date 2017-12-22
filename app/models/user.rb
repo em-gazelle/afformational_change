@@ -12,7 +12,12 @@ class User < ActiveRecord::Base
 	
 	validates_presence_of :email #, :name
 	after_validation :assign_general_if_no_or_all_focus_areas_selected
+	after_create :send_welcome_email
 
+
+	def send_welcome_email
+		UserMailer.welcome_email(self.email).deliver_now
+	end
 
 	private 
 
@@ -21,5 +26,4 @@ class User < ActiveRecord::Base
 			self.personal_afformation_focus_area = ["general"]
 		end
 	end
-
 end

@@ -55,6 +55,8 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # sends emails via the browser
+  gem "letter_opener"
 end
 
 # sharing secrets in config/secrets.yml with heroku:
