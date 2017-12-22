@@ -4,12 +4,18 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>How did you find the courage and power within yourself to change your thoughts, and the resourcefulness and wisdom to find such an efficient, effective way to enact change? </h1>
-    <p>
-      Only you have the answer to this afformation--but regardless of whether you're feeling motivated tomorrow (or the next day), change is now inevitable--you've successfully signed up to receive daily afformations!
+    <h1 style="text-align: center;">How did you find the courage and power to change your thoughts? </h1>
+    <p style="text-align: center; font-size: large;">
+      Only you have the answer to this afformation... but change is now inevitable: you've successfully signed up to receive daily afformations!
     </p>
-    <p>
-      Thanks for joining! Get ready to change your thoughts ;)
-    </p>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td align="center">
+            <%= image_tag @welcome_picture.url, alt: 'Why are you so grounded in yourself that you do not even *need* an inspirational photo?', width: "600", height: "450", style: "display: block; border-radius: 50px; opacity: .75; max-width: 100%; height: auto !important;" %>
+          </td>
+        </tr>
+    </table>
+    <p style="text-align: center;">Thanks for joining! Get ready to change your thoughts.</p>
+    <p style="text-align: center;">Return to <a href="https://daily-afformations.herokuapp.com/">Afformational Change</a> anytime to create, ruminate, or answer your afformations.</p>
   </body>
 </html>
