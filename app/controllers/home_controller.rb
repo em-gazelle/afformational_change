@@ -1,9 +1,6 @@
 class HomeController < ApplicationController
 	skip_before_filter :authenticate_user!
 
-	def index
-	end
-
 	def show
 		if user_signed_in?
 			set_user_counts
