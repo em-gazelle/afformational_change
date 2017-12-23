@@ -9,9 +9,21 @@ class UserMailer < ApplicationMailer
 	def daily_afformation(user, afformation)
 		@user = user
 		@afformation = afformation
+
+		@random_image = random_image_from_directory
+		attachments.inline[@random_image] = {content: File.read("#{Rails.root}/app/assets/images/#{@random_image}"), content_id: 'logo'}
+		@afformation_picture =  attachments[@random_image]
 		
 		mail(to: @user.email, subject: @afformation.afformation_text)
 		SentAfformation.create!(afformation_id: @afformation.id, user_id: @user.id)
+	end
+
+	private
+
+	def random_image_from_directory
+	    images_path_prefix = "app/assets/images/"
+	    image_files = Dir.glob("#{images_path_prefix}*")
+	    image_files.sample.remove(images_path_prefix)
 	end
 
 end
