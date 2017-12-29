@@ -3,9 +3,7 @@ class SentAfformationsController < ApplicationController
 	before_action :check_if_user_permitted_to_change_afformation, only: [:edit, :update]
 
 	def index
-		@sent_afformations = SentAfformation.where(user_id: current_user.id)
-		# @sent_afformations = Afformation.where(id: SentAfformation.where(user_id: current_user.id).pluck(:afformation_id))
-		# @sent_afformations_text = @sent_afformations.pluck(:afformation_text)
+		@sent_afformations = SentAfformation.where(user_id: current_user.id).unanswered_first
 	end
 
 	def edit

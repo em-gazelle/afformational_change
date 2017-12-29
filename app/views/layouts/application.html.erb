@@ -55,6 +55,10 @@
 		</nav>
 
 		<div class="container bg-light" id="site-content-container">
+			<% flash.each do |name, msg| %>
+				<%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+			<% end %>
+
 			<%= yield %>
 		</div>
 
