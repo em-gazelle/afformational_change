@@ -1,6 +1,9 @@
 namespace :db do
   desc "Sending out daily afformations to users"
-  task send_afformations: :environment do
+  task send_afformations: :environment do 
+
+    # system "web: bundle exec puma -C config/puma.rb"
+    # system "worker: bundle exec sidekiq -e production -C config/sidekiq.yml"  
 
     @admin_afformations = Afformation.where(user_id: nil)
     @random_admin_afformation = @admin_afformations.sample
