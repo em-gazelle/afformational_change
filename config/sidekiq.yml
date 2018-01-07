@@ -1,0 +1,5 @@
+:namespace: app
+:concurrency: 4
+:queues:
+  - default
+  - mailers

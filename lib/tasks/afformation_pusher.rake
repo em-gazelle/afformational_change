@@ -8,11 +8,12 @@ namespace :db do
 
     @subscribed_users = User.where(deactivated: [nil, false])
 
+    @random_image_file_name = random_image_from_directory
 
     @subscribed_users.each do |user|
       afformation = generate_random_afformation(user)
 
-      UserMailer.daily_afformation(user, afformation).deliver_now
+      UserMailer.delay.daily_afformation(user.id, afformation.id, @random_image_file_name)
     end
 
   end
@@ -32,4 +33,10 @@ def generate_random_afformation(user)
       @random_admin_afformation
     end
   end
+end
+
+def random_image_from_directory
+    images_path_prefix = "app/assets/images/"
+    image_files = Dir.glob("#{images_path_prefix}*")
+    image_files.sample.remove(images_path_prefix)
 end

@@ -31,14 +31,10 @@ gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'resque', "~> 1.22.0"
 gem 'devise'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'sidekiq'
+gem 'redis'
+# gem 'devise-async'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -62,8 +58,8 @@ end
 # sharing secrets in config/secrets.yml with heroku:
 gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 
-# gem rails_12factor and ruby specification for heroku:
-gem 'rails_12factor', group: :production
-
-ruby "2.3.1"
-
+group :production do
+  gem 'rails_12factor'
+  gem 'puma'
+  ruby "2.3.1"
+end
