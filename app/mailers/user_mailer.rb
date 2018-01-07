@@ -5,7 +5,6 @@ class UserMailer < ApplicationMailer
 		mail(to: user_email, subject: 'How did you become so open to change?')
 	end
 
-	# def daily_afformation(user, afformation, random_file_name)
 	def daily_afformation(user_id, afformation_id, random_image_file_name)
 		@user = User.find(user_id)
 		@afformation = Afformation.find(afformation_id)
