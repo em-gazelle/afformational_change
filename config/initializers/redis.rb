@@ -13,4 +13,3 @@ else
   uri = URI.parse("redis://localhost:6379")
 end
 Resque.redis = Redis.new(host: uri.host, port: uri.port, password: uri.password)
-Rails.logger.info "Resque.redis in intit/redis.rb returns: #{Resque.redis}"
