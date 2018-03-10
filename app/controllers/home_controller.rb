@@ -2,6 +2,9 @@ class HomeController < ApplicationController
 	skip_before_filter :authenticate_user!
 
 	def show
+	    @meta_title = meta_title 'Daily Afformations - Personal Progress, Evidence of Change'
+		@meta_description = "Want to know how far you've come? To see evidence of how've you changed? To view and measure your progress? Here, you can see summaries of how many days you've been receiving afformations, journaled official responses to, and how many personal afformations you've created"
+
 		if user_signed_in?
 			set_user_counts
 			@user_count_text = "So far, you've made " + @user_afformations_count.to_s + " personal afformations and have received " + @user_sent_afformations_count.to_s + " daily afformations, along with officially responding to " + @user_responses_count.to_s + " afformations."			

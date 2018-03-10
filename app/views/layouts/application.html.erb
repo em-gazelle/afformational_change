@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Daily Afformations</title>
+		<title><%= @meta_title ? @meta_title : ApplicationController::BRAND_NAME %></title>
+	    <meta name="description" content="<%= @meta_description %>">
+
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>

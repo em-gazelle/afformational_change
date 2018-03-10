@@ -3,6 +3,9 @@ class SentAfformationsController < ApplicationController
 	before_action :check_if_user_permitted_to_change_afformation, only: [:edit, :update]
 
 	def index
+	    @meta_title = meta_title 'Daily Afformations - View Afformations that were sent out daily, along with answers'
+		@meta_description = 'List of afformations that were sent out daily to users, along with any answers / journaled responses submitted to each daily afformation.'
+
 		@sent_afformations = SentAfformation.where(user_id: current_user.id).unanswered_first
 	end
 

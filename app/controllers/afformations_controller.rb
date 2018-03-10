@@ -5,6 +5,9 @@ class AfformationsController < ApplicationController
   # GET /afformations
   # GET /afformations.json
   def index
+    @meta_title = meta_title 'My Personally Crafted Afformations'
+    @meta_description = "View a list of all the personal afformations you've created, which will help you spur change within your life"
+
     if current_user.admin?
       @afformations = Afformation.where(user_id: nil)
     else
@@ -24,6 +27,8 @@ class AfformationsController < ApplicationController
   # POST /afformations
   # POST /afformations.json
   def create
+    @meta_title = meta_title 'Daily Afformations - Create your own personal afformations'
+
     @afformation = Afformation.new(afformation_params)
     @afformation.user_id = current_user.id if !current_user.admin?
 
