@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -22,9 +21,8 @@ ActiveRecord::Schema.define(version: 20171215150136) do
     t.datetime "updated_at",                         null: false
     t.integer  "afformation_focus_area", default: 0
     t.integer  "user_id"
+    t.index ["user_id"], name: "index_afformations_on_user_id", using: :btree
   end
-
-  add_index "afformations", ["user_id"], name: "index_afformations_on_user_id", using: :btree
 
   create_table "sent_afformations", force: :cascade do |t|
     t.datetime "email_replied_to_date"
@@ -33,10 +31,9 @@ ActiveRecord::Schema.define(version: 20171215150136) do
     t.integer  "afformation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["afformation_id"], name: "index_sent_afformations_on_afformation_id", using: :btree
+    t.index ["user_id"], name: "index_sent_afformations_on_user_id", using: :btree
   end
-
-  add_index "sent_afformations", ["afformation_id"], name: "index_sent_afformations_on_afformation_id", using: :btree
-  add_index "sent_afformations", ["user_id"], name: "index_sent_afformations_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -57,10 +54,9 @@ ActiveRecord::Schema.define(version: 20171215150136) do
     t.inet     "last_sign_in_ip"
     t.boolean  "admin",                           default: false
     t.string   "personal_afformation_focus_area", default: [],                 array: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "sent_afformations", "afformations"
   add_foreign_key "sent_afformations", "users"

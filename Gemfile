@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
@@ -43,6 +43,11 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails', '~>3.7.2'
   gem 'pry-rails'
+end
+
+group :test do
+  # for 'assigns' and 'assert_template' in Rails 5 rspec
+  gem 'rails-controller-testing'
 end
 
 group :development do

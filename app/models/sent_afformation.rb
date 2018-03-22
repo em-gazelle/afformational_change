@@ -1,4 +1,4 @@
-class SentAfformation < ActiveRecord::Base
+class SentAfformation < ApplicationRecord
 	belongs_to :user
 	belongs_to :afformation
 

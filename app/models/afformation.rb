@@ -1,4 +1,4 @@
-class Afformation < ActiveRecord::Base	
+class Afformation < ApplicationRecord	
 	include AfformationEnumMappings
 	enum afformation_focus_area: Afformation.afformation_enum_mappings
 
