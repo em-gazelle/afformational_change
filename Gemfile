@@ -35,6 +35,12 @@ gem 'sidekiq'
 gem 'redis'
 # gem 'devise-async'
 
+# Rails API - token authentication, CORS, ...
+gem 'rack-cors'
+# protect from DDoS, brute force attacks, hammering, or even monetize with paid usage limits
+gem 'rack-attack'
+# JWT for token authorizations
+gem 'jwt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

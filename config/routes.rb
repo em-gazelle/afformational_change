@@ -9,4 +9,14 @@ Rails.application.routes.draw do
   resources :afformations, except: [:show]
   resources :sent_afformations, only: [:index, :edit, :update]
 
+  namespace :api do
+  	namespace :v1 do
+		resources :users
+		resources :afformations, except: [:show]
+		resources :sent_afformations, only: [:index, :edit, :update]
+
+		get 'home', to: 'home#show', as: 'home'
+	end
+  end
+
 end

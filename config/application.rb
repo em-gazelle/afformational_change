@@ -23,6 +23,18 @@ module AfformationPusher
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+    # rack-attack gem. protecting API from various security concerns
+    config.middleware.use Rack::Attack
+
+    # rack-cors - Rails API - allowing cross-origin resource sharing
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any#, :methods => [:get, :post, :options]
+      end
+    end
+
+
     # ActionMailer->ActiveJob->Resque, Redis, Sidekiq
     config.active_job.queue_adapter = :sidekiq
 
