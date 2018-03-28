@@ -96,6 +96,10 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.6)
     jwt (1.5.6)
+    knock (2.1.1)
+      bcrypt (~> 3.1)
+      jwt (~> 1.5)
+      rails (>= 4.2)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.6.0)
@@ -266,7 +270,7 @@ DEPENDENCIES
   heroku_secrets!
   jbuilder (~> 2.0)
   jquery-rails
-  jwt
+  knock
   letter_opener
   pg (~> 0.15)
   pry-rails

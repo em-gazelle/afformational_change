@@ -39,8 +39,8 @@ gem 'redis'
 gem 'rack-cors'
 # protect from DDoS, brute force attacks, hammering, or even monetize with paid usage limits
 gem 'rack-attack'
-# JWT for token authorizations
-gem 'jwt'
+# JWT for token authorizations - Knock = JWT + Rails API Auth
+gem 'knock'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

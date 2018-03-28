@@ -11,12 +11,13 @@ Rails.application.routes.draw do
 
   namespace :api do
   	namespace :v1 do
-		resources :users
-		resources :afformations, except: [:show]
-		resources :sent_afformations, only: [:index, :edit, :update]
+      post 'user_token' => 'user_token#create'
 
-		get 'home', to: 'home#show', as: 'home'
-	end
+  		resources :afformations, except: [:show]
+  		resources :sent_afformations, only: [:index, :edit, :update]
+
+      get 'home', to: 'home#first_time_or_logged_out', as: 'first_time_or_logged_out'
+  	end
   end
 
 end
