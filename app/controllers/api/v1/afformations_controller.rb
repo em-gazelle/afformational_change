@@ -1,23 +1,17 @@
 module Api::V1  
   class AfformationsController < ApiController
-    # skip_before_filter :authenticate_user!
-    # before_filter :restrict_access_and_find_user
     respond_to :json
-
-
-
     before_action :set_afformation, only: [:edit, :update, :destroy]
-    # before_action :check_if_user_permitted_to_change_afformation, only: [:destroy, :update]
+    before_action :check_if_user_permitted_to_change_afformation, only: [:destroy, :update]
     
     # GET /afformations
     # GET /afformations.json
     def index
-      # if current_user.admin?
-      #   @afformations = Afformation.where(user_id: nil)
-      # else
-      #   @afformations = current_user.afformations
-      # end
-      @afformations = Afformation.where(user_id: nil)
+      if current_user.admin?
+        @afformations = Afformation.where(user_id: nil)
+      else
+        @afformations = current_user.afformations
+      end
 
       render json: { afformations: @afformations, status: :ok }
     end
@@ -64,11 +58,6 @@ module Api::V1
     end
 
     private
-      def restrict_access_and_find_user
-        api_key = ApiKey.find_by_access_token(params[:api_key])
-        head :unauthorized unless api_key
-      end
-
       # Use callbacks to share common setup or constraints between actions.
       def set_afformation
         @afformation = Afformation.find(params[:id])
@@ -86,7 +75,7 @@ module Api::V1
       end
 
       def handle_unauthorized_users
-        render json: { message: "Unathorized user", status: :unauthorized }
+        render json: { message: "Unauthorized user", status: :unauthorized }
       end   
 
   end

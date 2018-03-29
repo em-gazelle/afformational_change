@@ -14,7 +14,7 @@ RSpec.describe AfformationsController, type: :controller do
       context 'submitted by non-admin : personal afformation' do
         it 'creates afformation with associated user id & sets user_submitted_personal_afformation to true' do
           sign_in user1
-          post :create, afformation: afformation_params
+          post :create, params: { afformation: afformation_params }
           expect(assigns(:afformation).user_id).to eq(user1.id)
           expect(response).to redirect_to(afformations_url)
         end
@@ -22,7 +22,7 @@ RSpec.describe AfformationsController, type: :controller do
       context 'submitted by admin' do
         it 'creates afformation with user id field null, no errors, and user_submitted_personal_afformation set to false' do
           sign_in admin
-          post :create, afformation: afformation_params
+          post :create, params: { afformation: afformation_params }
           expect(assigns(:afformation).user_id).to be nil
           expect(response).to redirect_to(afformations_url)
         end
@@ -87,12 +87,12 @@ RSpec.describe AfformationsController, type: :controller do
 
       it 'destroys afformations with no user_id' do
         expect{
-          delete :destroy, id: admin_afformation.id
+          delete :destroy, params: { id: admin_afformation.id }
         }.to change(Afformation, :count).by(-1)
       end
       it 'does not delete afformations with user_id not nil' do
         expect{
-          delete :destroy, id: personal_afformation_user1.id
+          delete :destroy, params: { id: personal_afformation_user1.id }
         }.to change(Afformation, :count).by(0)
       end
     end
@@ -103,17 +103,17 @@ RSpec.describe AfformationsController, type: :controller do
 
       it 'destroys afformations that match user_id' do
         expect{
-          delete :destroy, id: personal_afformation_user1.id
+          delete :destroy, params: { id: personal_afformation_user1.id }
         }.to change(Afformation, :count).by(-1)
       end
       it 'does not delete afformations that have no user_id' do
         expect{
-          delete :destroy, id: admin_afformation.id
+          delete :destroy, params: { id: admin_afformation.id }
         }.to change(Afformation, :count).by(0)
       end
       it 'does not delete afformations that have a different user_id' do
         expect{
-          delete :destroy, id: personal_afformation_user2.id
+          delete :destroy, params: { id: personal_afformation_user2.id }
         }.to change(Afformation, :count).by(0)
       end
     end

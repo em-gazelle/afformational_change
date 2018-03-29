@@ -6,6 +6,8 @@ class User < ApplicationRecord
 	# devise :database_authenticatable, :async, :registerable,
 	devise :database_authenticatable, :registerable,
 	     :recoverable, :rememberable, :trackable, :validatable
+	# JWT: Authentication within an API request
+	alias authenticate valid_password?
 	
 	has_many :afformations, through: :sent_afformations
 	# optional, user submitted only
@@ -15,10 +17,10 @@ class User < ApplicationRecord
 	after_validation :assign_general_if_no_or_all_focus_areas_selected
 	after_create :send_welcome_email
 
-
 	def send_welcome_email
 		UserMailer.welcome_email(self.email).deliver_now
 	end
+
 
 	private 
 
